@@ -1,9 +1,11 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <algorithm> 
+#include <random>    
+#include <chrono>    
 
 using namespace std;
-
 
 enum class Suit {
     SPADES,   // ♠
@@ -57,7 +59,6 @@ public:
     bool isEmpty() const;
     int size() const;
 };
-
 
 class Player {
 protected:
@@ -185,7 +186,7 @@ public:
 
 void displayStartMenu() {
     cout << "╔══════════════════════════════════════════════╗\n";
-    cout << "║                  DurakMaster                  ║\n";
+    cout << "║                  DurakMaster                 ║\n";
     cout << "║                   «Дурень»                   ║\n";
     cout << "╠══════════════════════════════════════════════╣\n";
     cout << "║  1. Нова гра                                 ║\n";
@@ -199,7 +200,101 @@ void displayStartMenu() {
     cout << "Оберіть опцію: ";
 }
 
+
+
+Card::Card(Suit s, Rank r) : suit(s), rank(r), is_trump(false) {}
+
+string Card::getInfo() const {
+    string r_str;
+    switch (rank) {
+        case Rank::JACK: r_str = "J"; break;
+        case Rank::QUEEN: r_str = "Q"; break;
+        case Rank::KING: r_str = "K"; break;
+        case Rank::ACE: r_str = "A"; break;
+        default: r_str = to_string(static_cast<int>(rank)); break;
+    }
+    string s_str;
+    switch (suit) {
+        case Suit::SPADES: s_str = "♠"; break;
+        case Suit::HEARTS: s_str = "♥"; break;
+        case Suit::DIAMONDS: s_str = "♦"; break;
+        case Suit::CLUBS: s_str = "♣"; break;
+    }
+    return r_str + s_str;
+}
+
+bool Card::getIsTrump() const { return is_trump; }
+void Card::setIsTrump(bool status) { is_trump = status; }
+Suit Card::getSuit() const { return suit; }
+Rank Card::getRank() const { return rank; }
+
+ostream& operator<<(ostream& os, const Card& card) {
+    os << card.getInfo();
+    if (card.is_trump) os << "(К)";
+    return os;
+}
+
+bool Card::operator<(const Card& other) const { return rank < other.rank; }
+bool Card::operator==(const Card& other) const { return rank == other.rank && suit == other.suit; }
+
+bool Card::canBeat(const Card& attackingCard) const {
+    if (suit == attackingCard.suit) {
+        return rank > attackingCard.rank;
+    }
+    return is_trump && !attackingCard.is_trump;
+}
+
+
+
+Deck::Deck(int size) : deck_size(size) {
+    Rank minRank = (size == 36) ? Rank::SIX : Rank::TWO;
+    Suit suits[] = {Suit::SPADES, Suit::HEARTS, Suit::DIAMONDS, Suit::CLUBS};
+    
+    for (Suit s : suits) {
+        for (int r = static_cast<int>(minRank); r <= static_cast<int>(Rank::ACE); ++r) {
+            cards.push_back(Card(s, static_cast<Rank>(r)));
+        }
+    }
+    shuffle();
+    
+    if (!cards.empty()) {
+        trump_suit = cards.back().getSuit();
+        for (auto& card : cards) {
+            if (card.getSuit() == trump_suit) {
+                card.setIsTrump(true);
+            }
+        }
+    }
+}
+
+void Deck::shuffle() {
+    unsigned seed = chrono::system_clock::now().time_since_epoch().count();
+    std::shuffle(cards.begin(), cards.end(), std::default_random_engine(seed));
+}
+
+vector<Card> Deck::dealCards(int n) {
+    vector<Card> dealt;
+    for (int i = 0; i < n && !cards.empty(); ++i) {
+        dealt.push_back(cards.back());
+        cards.pop_back();
+    }
+    return dealt;
+}
+
+Card Deck::drawCard() {
+    Card c = cards.back();
+    cards.pop_back();
+    return c;
+}
+
+Suit Deck::getTrumpSuit() const { return trump_suit; }
+bool Deck::isEmpty() const { return cards.empty(); }
+int Deck::size() const { return cards.size(); }
+
+
+
 int main(){
+
     displayStartMenu();
     return 0;
 };
