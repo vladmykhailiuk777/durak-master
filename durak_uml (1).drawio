@@ -1,0 +1,302 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Durak UML" id="durak-uml-v3">
+    <mxGraphModel dx="1800" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1340" pageHeight="1414" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="suit" parent="1"
+          style="swimlane;fontStyle=3;align=center;startSize=30;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#23608e;fontColor=#0d3c61;rounded=1;"
+          value="&lt;i&gt;«перелік»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;Suit&lt;/b&gt;" vertex="1">
+          <mxGeometry x="40" y="50" width="160" height="126" as="geometry" />
+        </mxCell>
+        <mxCell id="suit_l" parent="suit"
+          style="line;strokeWidth=1;fillColor=none;strokeColor=inherit;"
+          value="" vertex="1">
+          <mxGeometry y="30" width="160" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="suit_v" parent="suit"
+          style="text;strokeColor=none;fillColor=none;align=left;spacingLeft=8;whiteSpace=wrap;html=1;"
+          value="SPADES&#xa;HEARTS&#xa;DIAMONDS&#xa;CLUBS" vertex="1">
+          <mxGeometry y="38" width="160" height="88" as="geometry" />
+        </mxCell>
+        <mxCell id="rank" parent="1"
+          style="swimlane;fontStyle=3;align=center;startSize=30;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#23608e;fontColor=#0d3c61;rounded=1;"
+          value="&lt;i&gt;«перелік»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;Rank&lt;/b&gt;" vertex="1">
+          <mxGeometry x="40" y="206" width="160" height="162" as="geometry" />
+        </mxCell>
+        <mxCell id="rank_l" parent="rank"
+          style="line;strokeWidth=1;fillColor=none;strokeColor=inherit;"
+          value="" vertex="1">
+          <mxGeometry y="30" width="160" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="rank_v" parent="rank"
+          style="text;strokeColor=none;fillColor=none;align=left;spacingLeft=8;whiteSpace=wrap;html=1;"
+          value="TWO = 2&#xa;THREE ... TEN&#xa;JACK&#xa;QUEEN&#xa;KING&#xa;ACE" vertex="1">
+          <mxGeometry y="38" width="160" height="124" as="geometry" />
+        </mxCell>
+        <mxCell id="card" parent="1"
+          style="swimlane;fontStyle=1;align=center;startSize=30;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#2d6a2d;fontColor=#1a3d1a;rounded=1;"
+          value="&lt;b&gt;Card&lt;/b&gt;" vertex="1">
+          <mxGeometry x="240" y="50" width="290" height="276" as="geometry" />
+        </mxCell>
+        <mxCell id="card_l1" parent="card"
+          style="line;strokeWidth=1;fillColor=none;strokeColor=inherit;"
+          value="" vertex="1">
+          <mxGeometry y="30" width="290" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="card_f" parent="card"
+          style="text;strokeColor=none;fillColor=none;align=left;spacingLeft=8;whiteSpace=wrap;html=1;"
+          value="– suit: Suit&#xa;– rank: Rank&#xa;– is_trump: bool" vertex="1">
+          <mxGeometry y="38" width="290" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="card_l2" parent="card"
+          style="line;strokeWidth=1;fillColor=none;strokeColor=inherit;"
+          value="" vertex="1">
+          <mxGeometry y="108" width="290" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="card_m" parent="card"
+          style="text;strokeColor=none;fillColor=none;align=left;spacingLeft=8;whiteSpace=wrap;html=1;"
+          value="+ getInfo(): string&#xa;+ getIsTrump(): bool&#xa;+ setIsTrump(status: bool): void&#xa;+ getSuit(): Suit&#xa;+ getRank(): Rank&#xa;+ canBeat(attackingCard: Card): bool&#xa;+ operator&lt;(other: Card): bool&#xa;+ operator==(other: Card): bool" vertex="1">
+          <mxGeometry y="116" width="290" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="deck" parent="1"
+          style="swimlane;fontStyle=1;align=center;startSize=30;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#2d6a2d;fontColor=#1a3d1a;rounded=1;"
+          value="&lt;b&gt;Deck&lt;/b&gt;" vertex="1">
+          <mxGeometry x="240" y="356" width="290" height="258" as="geometry" />
+        </mxCell>
+        <mxCell id="deck_l1" parent="deck"
+          style="line;strokeWidth=1;fillColor=none;strokeColor=inherit;"
+          value="" vertex="1">
+          <mxGeometry y="30" width="290" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="deck_f" parent="deck"
+          style="text;strokeColor=none;fillColor=none;align=left;spacingLeft=8;whiteSpace=wrap;html=1;"
+          value="– cards: vector&lt;Card&gt;&#xa;– trump_suit: Suit&#xa;– deck_size: int" vertex="1">
+          <mxGeometry y="38" width="290" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="deck_l2" parent="deck"
+          style="line;strokeWidth=1;fillColor=none;strokeColor=inherit;"
+          value="" vertex="1">
+          <mxGeometry y="108" width="290" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="deck_m" parent="deck"
+          style="text;strokeColor=none;fillColor=none;align=left;spacingLeft=8;whiteSpace=wrap;html=1;"
+          value="+ Deck(size: int)&#xa;+ shuffle(): void&#xa;+ dealCards(n: int): vector&lt;Card&gt;&#xa;+ drawCard(): Card&#xa;+ getTrumpSuit(): Suit&#xa;+ isEmpty(): bool&#xa;+ size(): int" vertex="1">
+          <mxGeometry y="116" width="290" height="142" as="geometry" />
+        </mxCell>
+        <mxCell id="table" parent="1"
+          style="swimlane;fontStyle=1;align=center;startSize=30;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#2d6a2d;fontColor=#1a3d1a;rounded=1;"
+          value="&lt;b&gt;Table&lt;/b&gt;" vertex="1">
+          <mxGeometry x="240" y="644" width="290" height="312" as="geometry" />
+        </mxCell>
+        <mxCell id="table_l1" parent="table"
+          style="line;strokeWidth=1;fillColor=none;strokeColor=inherit;"
+          value="" vertex="1">
+          <mxGeometry y="30" width="290" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="table_f" parent="table"
+          style="text;strokeColor=none;fillColor=none;align=left;spacingLeft=8;whiteSpace=wrap;html=1;"
+          value="– attack_cards: vector&lt;Card&gt;&#xa;– defense_cards: vector&lt;Card&gt;&#xa;– max_cards: int" vertex="1">
+          <mxGeometry y="38" width="290" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="table_l2" parent="table"
+          style="line;strokeWidth=1;fillColor=none;strokeColor=inherit;"
+          value="" vertex="1">
+          <mxGeometry y="108" width="290" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="table_m" parent="table"
+          style="text;strokeColor=none;fillColor=none;align=left;spacingLeft=8;whiteSpace=wrap;html=1;"
+          value="+ addAttackCard(card: Card): void&#xa;+ addDefenseCard(card: Card): void&#xa;+ canAddCard(rank: Rank): bool&#xa;+ isFullyDefended(): bool&#xa;+ getAllCards(): vector&lt;Card&gt;&#xa;+ getAttackCards(): const vector&lt;Card&gt;&amp;&#xa;+ getAttackCardsCount(): int&#xa;+ getDefenseCardsCount(): int&#xa;+ clear(): void&#xa;+ display(): void" vertex="1">
+          <mxGeometry y="116" width="290" height="196" as="geometry" />
+        </mxCell>
+        <mxCell id="player" parent="1"
+          style="swimlane;fontStyle=3;align=center;startSize=30;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#b46504;fontColor=#7a3c00;rounded=1;"
+          value="&lt;i&gt;«абстрактний клас»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;Player&lt;/b&gt;" vertex="1">
+          <mxGeometry x="570" y="50" width="340" height="384" as="geometry" />
+        </mxCell>
+        <mxCell id="player_l1" parent="player"
+          style="line;strokeWidth=1;fillColor=none;strokeColor=inherit;"
+          value="" vertex="1">
+          <mxGeometry y="30" width="340" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="player_f" parent="player"
+          style="text;strokeColor=none;fillColor=none;align=left;spacingLeft=8;whiteSpace=wrap;html=1;"
+          value="# name: string&#xa;# hand: vector&lt;Card&gt;&#xa;# is_out: bool&#xa;# cards_taken: int" vertex="1">
+          <mxGeometry y="38" width="340" height="88" as="geometry" />
+        </mxCell>
+        <mxCell id="player_l2" parent="player"
+          style="line;strokeWidth=1;fillColor=none;strokeColor=inherit;"
+          value="" vertex="1">
+          <mxGeometry y="126" width="340" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="player_m" parent="player"
+          style="text;strokeColor=none;fillColor=none;align=left;spacingLeft=8;whiteSpace=wrap;html=1;"
+          value="&lt;i&gt;+ chooseAttackCard(table: Table): int&lt;/i&gt;&#xa;&lt;i&gt;+ chooseDefenseCard(card: Card, table: Table): int&lt;/i&gt;&#xa;&lt;i&gt;+ wantToPass(): bool&lt;/i&gt;&#xa;+ addCards(newCards: vector&lt;Card&gt;): void&#xa;+ addCard(card: Card): void&#xa;+ removeCard(index: int): void&#xa;+ showHand(): void&#xa;+ getHandSize(): int&#xa;+ hasCards(): bool&#xa;+ getName(): string&#xa;+ isOut(): bool&#xa;+ setOut(status: bool): void&#xa;+ getHandCopy(): vector&lt;Card&gt;" vertex="1">
+          <mxGeometry y="134" width="340" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="human" parent="1"
+          style="swimlane;fontStyle=1;align=center;startSize=30;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#c09400;fontColor=#6b5200;rounded=1;"
+          value="&lt;b&gt;HumanPlayer&lt;/b&gt;" vertex="1">
+          <mxGeometry x="570" y="464" width="340" height="108" as="geometry" />
+        </mxCell>
+        <mxCell id="human_l" parent="human"
+          style="line;strokeWidth=1;fillColor=none;strokeColor=inherit;"
+          value="" vertex="1">
+          <mxGeometry y="30" width="340" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="human_m" parent="human"
+          style="text;strokeColor=none;fillColor=none;align=left;spacingLeft=8;whiteSpace=wrap;html=1;"
+          value="+ chooseAttackCard(table: Table): int&#xa;+ chooseDefenseCard(card: Card, table: Table): int&#xa;+ wantToPass(): bool" vertex="1">
+          <mxGeometry y="38" width="340" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="gamemode" parent="1"
+          style="swimlane;fontStyle=3;align=center;startSize=30;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#6a3d9a;fontColor=#3d1d6b;rounded=1;"
+          value="&lt;i&gt;«абстрактний клас»&lt;/i&gt;&lt;br/&gt;&lt;b&gt;GameMode&lt;/b&gt;" vertex="1">
+          <mxGeometry x="950" y="50" width="330" height="108" as="geometry" />
+        </mxCell>
+        <mxCell id="gm_l" parent="gamemode"
+          style="line;strokeWidth=1;fillColor=none;strokeColor=inherit;"
+          value="" vertex="1">
+          <mxGeometry y="30" width="330" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="gm_m" parent="gamemode"
+          style="text;strokeColor=none;fillColor=none;align=left;spacingLeft=8;whiteSpace=wrap;html=1;"
+          value="&lt;i&gt;+ canThrow(player: Player*, table: Table): bool&lt;/i&gt;&#xa;&lt;i&gt;+ getModeName(): string&lt;/i&gt;&#xa;&lt;i&gt;+ handleTurn(session: GameSession&amp;): void&lt;/i&gt;" vertex="1">
+          <mxGeometry y="38" width="330" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="throwing" parent="1"
+          style="swimlane;fontStyle=1;align=center;startSize=30;whiteSpace=wrap;html=1;fillColor=#f3e8ff;strokeColor=#6a3d9a;fontColor=#4a1d7a;rounded=1;"
+          value="&lt;b&gt;ThrowingDurak&lt;/b&gt;" vertex="1">
+          <mxGeometry x="950" y="188" width="330" height="108" as="geometry" />
+        </mxCell>
+        <mxCell id="td_l" parent="throwing"
+          style="line;strokeWidth=1;fillColor=none;strokeColor=inherit;"
+          value="" vertex="1">
+          <mxGeometry y="30" width="330" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="td_m" parent="throwing"
+          style="text;strokeColor=none;fillColor=none;align=left;spacingLeft=8;whiteSpace=wrap;html=1;"
+          value="+ canThrow(player: Player*, table: Table): bool&#xa;+ getModeName(): string&#xa;+ handleTurn(session: GameSession&amp;): void" vertex="1">
+          <mxGeometry y="38" width="330" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="gameresult" parent="1"
+          style="swimlane;fontStyle=1;align=center;startSize=30;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontColor=#6f1f1c;rounded=1;"
+          value="&lt;b&gt;GameResult&lt;/b&gt;" vertex="1">
+          <mxGeometry x="950" y="326" width="290" height="168" as="geometry" />
+        </mxCell>
+        <mxCell id="gr_l1" parent="gameresult"
+          style="line;strokeWidth=1;fillColor=none;strokeColor=inherit;"
+          value="" vertex="1">
+          <mxGeometry y="30" width="290" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="gr_f" parent="gameresult"
+          style="text;strokeColor=none;fillColor=none;align=left;spacingLeft=8;whiteSpace=wrap;html=1;"
+          value="– loser_name: string&#xa;– winner_names: vector&lt;string&gt;&#xa;– total_turns: int" vertex="1">
+          <mxGeometry y="38" width="290" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="gr_l2" parent="gameresult"
+          style="line;strokeWidth=1;fillColor=none;strokeColor=inherit;"
+          value="" vertex="1">
+          <mxGeometry y="108" width="290" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="gr_m" parent="gameresult"
+          style="text;strokeColor=none;fillColor=none;align=left;spacingLeft=8;whiteSpace=wrap;html=1;"
+          value="+ setLoser(name: string): void&#xa;+ display(): void" vertex="1">
+          <mxGeometry y="116" width="290" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="gamesession" parent="1"
+          style="swimlane;fontStyle=1;align=center;startSize=30;whiteSpace=wrap;html=1;fillColor=#ffe0e0;strokeColor=#b85450;fontColor=#6f1f1c;rounded=1;"
+          value="&lt;b&gt;GameSession&lt;/b&gt;" vertex="1">
+          <mxGeometry x="240" y="1006" width="380" height="348" as="geometry" />
+        </mxCell>
+        <mxCell id="gs_l1" parent="gamesession"
+          style="line;strokeWidth=1;fillColor=none;strokeColor=inherit;"
+          value="" vertex="1">
+          <mxGeometry y="30" width="380" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="gs_f" parent="gamesession"
+          style="text;strokeColor=none;fillColor=none;align=left;spacingLeft=8;whiteSpace=wrap;html=1;"
+          value="– players: vector&lt;Player*&gt;&#xa;– deck: Deck&#xa;– table: Table&#xa;– game_mode: GameMode*&#xa;– attacker_idx: int&#xa;– defender_idx: int&#xa;– discard: vector&lt;Card&gt;" vertex="1">
+          <mxGeometry y="38" width="380" height="142" as="geometry" />
+        </mxCell>
+        <mxCell id="gs_l2" parent="gamesession"
+          style="line;strokeWidth=1;fillColor=none;strokeColor=inherit;"
+          value="" vertex="1">
+          <mxGeometry y="180" width="380" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="gs_m" parent="gamesession"
+          style="text;strokeColor=none;fillColor=none;align=left;spacingLeft=8;whiteSpace=wrap;html=1;"
+          value="+ GameSession(names: vector&lt;string&gt;, deckSize: int, mode: GameMode*): void&#xa;+ start(): void&#xa;+ nextTurn(): void&#xa;+ dealToPlayers(): void&#xa;+ checkWinCondition(): bool&#xa;+ displayState(): void&#xa;+ getResult(): GameResult&#xa;+ getNextActivePlayer(idx: int): int" vertex="1">
+          <mxGeometry y="188" width="380" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="legend" parent="1"
+          style="swimlane;fontStyle=1;align=center;startSize=30;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666;fontColor=#333;rounded=1;"
+          value="Легенда" vertex="1">
+          <mxGeometry x="40" y="1006" width="290" height="216" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_l" parent="legend"
+          style="line;strokeWidth=1;fillColor=none;strokeColor=inherit;"
+          value="" vertex="1">
+          <mxGeometry y="30" width="290" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_v" parent="legend"
+          style="text;strokeColor=none;fillColor=none;align=left;spacingLeft=8;whiteSpace=wrap;html=1;"
+          value="——▷  Наслідування&#xa;– – ▷  Залежність (використовує)&#xa;——◇  Агрегація (має)&#xa;+ публічний   – приватний   # захищений&#xa;&lt;i&gt;курсив&lt;/i&gt; = абстрактний метод&#xa;&#xa;🟢 Card, Deck, Table&#xa;🟠 Player  🟡 HumanPlayer&#xa;🟣 GameMode  🔴 Session/Result" vertex="1">
+          <mxGeometry y="38" width="290" height="178" as="geometry" />
+        </mxCell>
+        <mxCell id="e_card_suit" edge="1" parent="1" source="card" target="suit"
+          style="edgeStyle=orthogonalEdgeStyle;dashed=1;endArrow=open;endFill=0;strokeWidth=1.5;strokeColor=#888;" value="використовує">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_card_rank" edge="1" parent="1" source="card" target="rank"
+          style="edgeStyle=orthogonalEdgeStyle;dashed=1;endArrow=open;endFill=0;strokeWidth=1.5;strokeColor=#888;" value="використовує">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_deck_card" edge="1" parent="1" source="deck" target="card"
+          style="edgeStyle=orthogonalEdgeStyle;endArrow=open;endFill=0;startArrow=ERmanyToOne;startFill=0;strokeWidth=2;strokeColor=#555;" value="містить">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_table_card" edge="1" parent="1" source="table" target="card"
+          style="edgeStyle=orthogonalEdgeStyle;endArrow=open;endFill=0;startArrow=ERmanyToOne;startFill=0;strokeWidth=2;strokeColor=#555;" value="містить">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_player_card" edge="1" parent="1" source="player" target="card"
+          style="edgeStyle=orthogonalEdgeStyle;endArrow=open;endFill=0;startArrow=ERmanyToOne;startFill=0;strokeWidth=2;strokeColor=#555;" value="рука (hand)">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_human_pl" edge="1" parent="1" source="human" target="player"
+          style="edgeStyle=orthogonalEdgeStyle;endArrow=block;endFill=0;strokeWidth=2.5;strokeColor=#555;" value="успадковує">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_td_gm" edge="1" parent="1" source="throwing" target="gamemode"
+          style="edgeStyle=orthogonalEdgeStyle;endArrow=block;endFill=0;strokeWidth=2.5;strokeColor=#555;" value="успадковує">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_gs_player" edge="1" parent="1" source="gamesession" target="player"
+          style="edgeStyle=orthogonalEdgeStyle;endArrow=open;endFill=0;startArrow=ERmanyToOne;startFill=0;strokeWidth=2;strokeColor=#555;" value="players[]">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_gs_deck" edge="1" parent="1" source="gamesession" target="deck"
+          style="edgeStyle=orthogonalEdgeStyle;endArrow=open;endFill=0;startArrow=ERmanyToOne;startFill=0;strokeWidth=2;strokeColor=#555;" value="deck">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_gs_table" edge="1" parent="1" source="gamesession" target="table"
+          style="edgeStyle=orthogonalEdgeStyle;endArrow=open;endFill=0;startArrow=ERmanyToOne;startFill=0;strokeWidth=2;strokeColor=#555;" value="table">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_gs_mode" edge="1" parent="1" source="gamesession" target="gamemode"
+          style="edgeStyle=orthogonalEdgeStyle;dashed=1;endArrow=open;endFill=0;strokeWidth=1.5;strokeColor=#888;" value="game_mode*">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_gs_result" edge="1" parent="1" source="gamesession" target="gameresult"
+          style="edgeStyle=orthogonalEdgeStyle;dashed=1;endArrow=open;endFill=0;strokeWidth=1.5;strokeColor=#888;" value="getResult()">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_td_gs" edge="1" parent="1" source="throwing" target="gamesession"
+          style="edgeStyle=orthogonalEdgeStyle;dashed=1;endArrow=open;endFill=0;strokeWidth=1.5;strokeColor=#888;" value="«friend»">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
